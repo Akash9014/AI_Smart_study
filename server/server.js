@@ -1,12 +1,11 @@
-const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
+dotenv.config();
+const express = require("express");
 
 // Load environment variables
-dotenv.config();
 
-// Connect to MongoDB
 connectDB();
 
 const app = express();
@@ -15,11 +14,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Test Route
-app.get("/api/test", (req, res) => {
-    res.json({ message: "Backend + DB working" });
-  });
-  
+app.use(cors({
+  origin: "http://localhost:3000", 
+  credentials: true
+}));
+app.use('/api/auth', require('./routes/auth'));
+app.use("/api/tasks", require("./routes/task"));
+
+app.get("/", (req, res) => {
+  res.send("Backend running");
+});
 
 // Port
 const PORT = process.env.PORT || 5000;
