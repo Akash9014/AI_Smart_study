@@ -1,4 +1,6 @@
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 function Sidebar() {
   return (
@@ -13,68 +15,17 @@ function Sidebar() {
     >
       <h2 style={{ color: "white" }}>StudyAI</h2>
 
-      <nav>
-        <NavLink
-          to="/"
-          style={({ isActive }) => ({
-            display: "block",
-            margin: "10px 0",
-            color: isActive ? "#38bdf8" : "white",
-            textDecoration: "none",
-          })}
-        >
-          Home
-        </NavLink>
-
-        <NavLink
-          to="/tasks"
-          style={({ isActive }) => ({
-            display: "block",
-            margin: "10px 0",
-            color: isActive ? "#38bdf8" : "white",
-            textDecoration: "none",
-          })}
-        >
-          Tasks
-        </NavLink>
-
-        <NavLink
-          to="/timer"
-          style={({ isActive }) => ({
-            display: "block",
-            margin: "10px 0",
-            color: isActive ? "#38bdf8" : "white",
-            textDecoration: "none",
-          })}
-        >
-          Focus Timer
-        </NavLink>
-
-        <NavLink
-          to="/revision"
-          style={({ isActive }) => ({
-            display: "block",
-            margin: "10px 0",
-            color: isActive ? "#38bdf8" : "white",
-            textDecoration: "none",
-          })}
-        >
-          Revision
-        </NavLink>
-
-        <NavLink
-          to="/analytics"
-          style={({ isActive }) => ({
-            display: "block",
-            margin: "10px 0",
-            color: isActive ? "#38bdf8" : "white",
-            textDecoration: "none",
-          })}
-        >
-          Analytics
-        </NavLink>
+      <nav style={{ marginTop: "30px" }}>
       </nav>
+      <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
+        <Link to="/dashboard" style={{ color: "white" }}>Home</Link>
+        <Link to="/dashboard/tasks" style={{ color: "white" }}>Tasks</Link>
+        <Link to="/dashboard/timer" style={{ color: "white" }}>Focus Timer</Link>
+        <Link to="/dashboard/revision" style={{ color: "white" }}>Revision</Link>
+        <Link to="/dashboard/analytics" style={{ color: "white" }}>Analytics</Link>
+      </div>
     </div>
+
   );
 }
 
